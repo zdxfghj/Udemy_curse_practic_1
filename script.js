@@ -41,11 +41,17 @@ let personalMovieDB = {
     // console.log(findMaxNumber(1, 5, '6', '10')) ;
 
 
-     console.log(fib(4)) ;
-     console.log(fib(7)) ;
-     console.log(fib('7')) ;
-     console.log(fib(1)) ;
-     console.log(fib(0)) ;
+    //  console.log(fib(4)) ;
+    //  console.log(fib(7)) ;
+    //  console.log(fib('7')) ;
+    //  console.log(fib(1)) ;
+    //  console.log(fib(0)) ;
+
+
+
+
+    // -------------------------------------------------------------------------------------------
+
 
 function writeYourGender(){
     for(let i=1; i<=3; i++){
@@ -173,5 +179,57 @@ if(typeof(col) !== 'string'){
     return '';
 }
      
+}
+
+
+//----------------------------------- Oblect JS------------------
+
+
+
+const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month'
+    },
+    showAgeAndLangs: function(obj){  //=> 'Мне 29 и я владею языками: RU ENG'
+        let str ='';
+       
+        const{languages} = obj.skills;
+       languages.forEach(function(lang) {
+        str+=`${lang.toUpperCase()} `;
+       });
+       
+        console.log(`Мне ${obj.age} и я владею языками: ${str}`);
+    }
+};
+
+//showExperience(personalPlanPeter); // => '1 month'
+//showProgrammingLangs(personalPlanPeter); // =>"Язык js изучен на 20% Язык php изучен на 10%"
+personalPlanPeter.showAgeAndLangs(personalPlanPeter);
+
+function showExperience(plan) {
+const {exp} = plan.skills;
+   // console.log(exp);
+    return(exp);
+}
+
+function showProgrammingLangs(plan) {
+    const {programmingLangs} = plan.skills;
+    
+    if( Object.keys(programmingLangs).length != 0 ){
+            for (const key in programmingLangs) {
+               //console.log(`Язык ${key} изучен на ${programmingLangs[key]} \n`);
+               return `Язык ${key} изучен на ${programmingLangs[key]} \n`;
+            }
+        }else{
+           // console.log("");
+            return '';
+        }
 }
 
