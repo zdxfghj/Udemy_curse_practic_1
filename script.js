@@ -199,19 +199,18 @@ const personalPlanPeter = {
     },
     showAgeAndLangs: function(obj){  //=> 'Мне 29 и я владею языками: RU ENG'
         let str ='';
-       
         const{languages} = obj.skills;
        languages.forEach(function(lang) {
         str+=`${lang.toUpperCase()} `;
        });
-       
-        console.log(`Мне ${obj.age} и я владею языками: ${str}`);
+        //console.log(`Мне ${obj.age} и я владею языками: ${str}`);
+        return `Мне ${obj.age} и я владею языками: ${str}`;
     }
 };
 
 //showExperience(personalPlanPeter); // => '1 month'
 //showProgrammingLangs(personalPlanPeter); // =>"Язык js изучен на 20% Язык php изучен на 10%"
-personalPlanPeter.showAgeAndLangs(personalPlanPeter);
+// personalPlanPeter.showAgeAndLangs(personalPlanPeter);
 
 function showExperience(plan) {
 const {exp} = plan.skills;
@@ -233,3 +232,67 @@ function showProgrammingLangs(plan) {
         }
 }
 
+// ---------------massiv---------------------
+
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily(arr) {
+    let str ='';
+   (arr.length != 0) ?  str = 'Семья состоит из:' : str = 'Семья пуста';
+    arr.forEach(element =>{
+        str+=` ${element}`;
+    });
+    return str;
+}
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+    let str ='';
+    arr.forEach((city) =>{
+        str+=`${city.toLowerCase()}\n`;
+    });
+    return str;
+    
+}
+
+// console.log(showFamily(family)); // => 'Семья состоит из: Peter Ann Alex Linda'
+// console.log(standardizeStrings(favoriteCities)); //  выведет в консоль lisbon rome milan dublin
+
+
+function reverse(str) {
+    let strReverse =  str.split('').reverse();
+    return strReverse.join('');
+}
+
+const someString = 'This is some strange string';
+console.log(reverse(someString)); //=> 'gnirts egnarts emos si sihT'
+
+
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+console.log(availableCurr(['UAH', 'RUB', 'CNY'], 'CNY'));
+
+function availableCurr(arr, missingCurr) {
+    if(arr.length == 0){
+        return 'Нет доступных валют';
+    }else{
+    let newArr=[];
+    for( let valueCurrencies of additionalCurrencies ){
+        baseCurrencies.push(valueCurrencies);
+       
+    }
+    for( let value of baseCurrencies){
+       for(let i = 0; i < arr.length; i++){
+        if (value === arr[i] ){
+            if(arr[i] != missingCurr){
+                newArr.push(arr[i]);
+                }
+            }
+        }
+    }   
+    
+    return 'Доступные валюты:\n'+newArr.join('\n');
+}
+}
