@@ -9,7 +9,65 @@ let personalMovieDB = {
     actors: {},
     genres:[],
     privat: true,
+    writeYourGender : function(){
+        for(let i=1; i<=3; i++){
+            do{
+                this.genres[i-1] = prompt(`Ваш любимый жанр под номером ${i}`,'');
+            }while(this.genres[i-1] === '' ||  this.genres[i-1] === null );
+        }
+        this.genres.forEach( (genr,i) =>{
+            console.log(`Любимый жанр ${i+1} - это ${genr}`);
+        });
+    },
+    showMyDB: function(hidden){
+        if( !hidden ){
+            console.log(personalMovieDB);}
+            else{
+                console.log('OK')
+            }
+    },
+    detectPersonalLevel: function(){
+
+        if(personalMovieDB.count<10){
+            alert("Просмотрено довольно мало фильмов");
+        }
+        else if(personalMovieDB.count>=10 && personalMovieDB.count<=30){
+            alert("Вы класический зритель");
+        }
+        else if(personalMovieDB.count > 30){
+            alert("Вы киноман");
+        }else{
+            alert("error");
+        }
+          
+    },
+    toggleVisibleMyBD: function(){
+        (this.privat == true) ?  this.privat = false :  this.privat = true;
+    },
+    
 };
+
+personalMovieDB.writeYourGender();
+
+    // writeYourGender(){
+    //     for(let i=1; i<=3; i++){
+    //             let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+    //        if(genre === '' ||  genre == null ){
+    //             console.log("Error");
+    //             i--;
+    //        }else{
+    //         personalMovieDB.genres[i] = genre;
+    //        }
+    //     }
+    //     personalMovieDB.genres.forEach( (genr,i) =>{
+    //         console.log(`Любимый жанр ${i+1} - это ${genr}`);
+    //     });
+    // }
+
+
+    // personalMovieDB.showMyDB(personalMovieDB.privat);
+    // personalMovieDB.toggleVisibleMyBD();
+    // personalMovieDB.showMyDB(personalMovieDB.privat);
 
     //rememberMyFilms();
     // detectPersonalLevel();
@@ -266,13 +324,13 @@ function reverse(str) {
 }
 
 const someString = 'This is some strange string';
-console.log(reverse(someString)); //=> 'gnirts egnarts emos si sihT'
+// console.log(reverse(someString)); //=> 'gnirts egnarts emos si sihT'
 
 
 const baseCurrencies = ['USD', 'EUR'];
 const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
 
-console.log(availableCurr(['UAH', 'RUB', 'CNY'], 'CNY'));
+// console.log(availableCurr(['UAH', 'RUB', 'CNY'], 'CNY'));
 
 function availableCurr(arr, missingCurr) {
     if(arr.length == 0){
