@@ -47,7 +47,7 @@ let personalMovieDB = {
     
 };
 
-personalMovieDB.writeYourGender();
+    // personalMovieDB.writeYourGender();
 
     // writeYourGender(){
     //     for(let i=1; i<=3; i++){
@@ -354,3 +354,53 @@ function availableCurr(arr, missingCurr) {
     return 'Доступные валюты:\n'+newArr.join('\n');
 }
 }
+
+
+const shoppingMallData = {
+    shops: [
+        {
+            width: 10,
+            length: 5
+        },
+        {
+            width: 15,
+            length: 7
+        },
+        {
+            width: 20,
+            length: 5
+        },
+        {
+            width: 8,
+            length: 10
+        }
+    ],
+    height: 5,
+    moneyPer1m3: 30,
+    budget: 50000
+};
+
+
+isBudgetEnough(shoppingMallData);
+
+function isBudgetEnough(mallData) {
+    let square = 0;
+    let squareAllMall = 0;
+    let volumeAllMall = 0;
+    let needBudget = 0;
+    mallData.shops.forEach( (shop)=> {
+        //console.log(shop);
+        square = shop.length*shop.width;
+        squareAllMall+=square;
+    } );
+    volumeAllMall = squareAllMall*mallData.height;
+    needBudget = volumeAllMall* mallData.moneyPer1m3;
+     console.log(needBudget);
+    if(needBudget <= mallData.budget){
+        console.log( 'Бюджета достаточно');
+        return 'Бюджета достаточно';
+    }else{
+        console.log( 'Бюджета недостаточно');
+        return 'Бюджета недостаточно';
+    }
+};
